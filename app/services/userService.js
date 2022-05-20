@@ -38,7 +38,7 @@ const jwt = require("jsonwebtoken")
       if (!(login && password )) {
         res.status(400).send("Поля не должны быть пустыми");
       }
-      const oldUser = await User.findOne({  });
+      const oldUser = await User.findOne({ where: { login: login } });
   
       if (oldUser) {
         return res.status(409).send("Такой пользователь уже существует");
